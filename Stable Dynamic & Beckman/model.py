@@ -91,18 +91,18 @@ class Model:
                 """
                 return np.maximum(point - grad / A, self.graph.freeflow_times)
             prox = prox_func
-        print('Oracles created...')
-        print(starting_msg)
+        # print('Oracles created...')
+        # print(starting_msg)
         
         if solver_name == 'fwm':
             result = solver_func(oracle,
                                  primal_dual_calculator, 
-                                 t_start = self.graph.freeflow_times,
+                                #  t_start = self.graph.freeflow_times,
                                  **solver_kwargs)
         else:
             result = solver_func(oracle, prox,
                                  primal_dual_calculator, 
-                                 t_start = self.graph.freeflow_times,
+                                #  t_start = self.graph.freeflow_times,
                                  **solver_kwargs)
         #getting travel times of every non-zero trips between zones:
         result['zone travel times'] = {}
